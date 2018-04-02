@@ -1,0 +1,71 @@
+<template>
+  <div :class="['custom-popup',active&&'active']">
+    <div class="custom-popup-mask"  @click="hide"></div>
+    <div class="custom-popup-content">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+<script>
+  export default {
+    name:'popup',
+    data(){
+      return {
+        active:false
+      }
+    },
+    methods:{
+      hide(){
+        this.active = false;
+      },
+      show(){
+        this.active = true;
+      },
+      toggle(){
+        this.active = !this.active;
+      }
+    }
+  }
+</script>
+<style lang="scss">
+  .custom-popup {
+    /*这个方法失效*/
+    /*box-shadow: 0 0 1000rpx rgba(0,0,0,0.5);*/
+    z-index: 11;
+
+    &.active{
+      .custom-popup-content{
+        transform: translate3d(0,0,0);
+      }
+
+      .custom-popup-mask{
+        display: block;
+      }
+    }
+
+    .custom-popup-mask{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+    }
+
+    .custom-popup-content{
+      padding: 0 20rpx;
+      background-color: #fff;
+      transform: translate3d(0,100%,0);
+      transition:all 0.4s ease;
+      position: fixed;
+      z-index: 12;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+
+  }
+</style>
