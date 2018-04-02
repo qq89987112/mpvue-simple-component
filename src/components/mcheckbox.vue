@@ -37,7 +37,6 @@
 
     methods:{
       onCheck(){
-        console.log("onCheck");
         this.value = !this.value;
       }
     }
