@@ -30,9 +30,10 @@
 </style>
 <template>
   <div class="counter-component">
-    <div class="iconfont icon-icon--1" @click="onSubTap"/>
-    <div class="count">{{count}}</div>
-    <div class="iconfont icon-icon--" @click="onPlusTap"/>
+    123
+    <!--<div class="iconfont icon-icon&#45;&#45;1" @click="onSubTap"/>-->
+    <!--<div class="count">{{count}}</div>-->
+    <!--<div class="iconfont icon-icon&#45;&#45;" @click="onPlusTap"/>-->
   </div>
 </template>
 <script>
@@ -40,16 +41,11 @@
    * <Checkbox :checked.sync="checked" />
    */
   export default {
-    props:[
-      "value",
-      "max",
-      "min",
-    ],
-
+    props:["value","max","min",],
+    name:"mcounter",
     data(){
       return {}
     },
-
     methods:{
       onSubTap(){
         let value = this.count -1;
