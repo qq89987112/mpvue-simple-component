@@ -1,5 +1,5 @@
 <template>
-  <div :class="['custom-popup',active&&'active']">
+  <div :class="['custom-popup',value&&'active']">
     <div class="custom-popup-mask"  @click="hide"></div>
     <div class="custom-popup-content">
       <slot></slot>
@@ -9,20 +9,20 @@
 <script>
   export default {
     name:'popup',
-    data(){
-      return {
-        active:false
-      }
-    },
+    props:["value"],
     methods:{
       hide(){
-        this.active = false;
+        this.$emit("input",false);
+        this.$emit("change",false);
       },
       show(){
-        this.active = true;
+        this.$emit("input",true);
+        this.$emit("change",true);
       },
       toggle(){
-        this.active = !this.active;
+        let b = !this.value;
+        this.$emit("input",b);
+        this.$emit("change",b);
       }
     }
   }
