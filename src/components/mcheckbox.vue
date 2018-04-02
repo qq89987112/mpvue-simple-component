@@ -19,7 +19,7 @@
 
 </style>
 <template>
-  <div @click="onCheck" class="iconfont {{checked ? 'icon-check' :'icon-unchecked'}}"/>
+  <div @click="onCheck" class="checkbox-component iconfont" :class="value ? 'icon-check' :'icon-unchecked'"/>
 </template>
 <script>
 
@@ -27,7 +27,8 @@
    * <Checkbox :checked.sync="checked" />
    */
   export default{
-    props:["checked"],
+    props:["value"],
+    name:"mcheckbox",
 
     data(){
       return {}
@@ -36,7 +37,8 @@
 
     methods:{
       onCheck(){
-        this.checked = !this.checked;
+        console.log("onCheck");
+        this.value = !this.value;
       }
     }
   }
