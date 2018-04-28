@@ -11,6 +11,10 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         display: inline-block;
+
+        &.slot{
+          margin-right: 10rpx;
+        }
     }
 
     .icon-check:before { content: "\e655"; }
@@ -19,7 +23,10 @@
 
 </style>
 <template>
-    <div @click="onCheck" class="checkbox-component iconfont" :class="value ? 'icon-check' :'icon-unchecked'"/>
+  <div @click="onCheck" class="checkbox-component">
+    <i class="iconfont" :class="[value ? 'icon-check' :'icon-unchecked',slot&&'slot']"></i>
+    <slot></slot>
+  </div>
 </template>
 <script>
 
@@ -31,9 +38,10 @@
         name:"mcheckbox",
 
         data(){
-            return {}
+            return {
+              slot:!!this.$slots.default
+            }
         },
-
 
         methods:{
             onCheck(){
