@@ -25,7 +25,8 @@
 <template>
   <div @click="onCheck" class="checkbox-component">
     <i class="iconfont" :class="[value ? 'icon-check' :'icon-unchecked',slot&&'slot']"></i>
-    <slot></slot>
+    <span v-if="text">{{text}}</span>
+    <template  v-else><slot></slot></template>
   </div>
 </template>
 <script>
@@ -34,18 +35,19 @@
      * <Checkbox :checked.sync="checked" />
      */
     export default{
-        props:["value"],
+      // text 应对某些地方slot无效的问题
+        props:["value","text"],
         name:"mcheckbox",
 
         data(){
             return {
-              slot:!!this.$slots.default
+              slot:!!this.$slots.default || !!this.text
             }
         },
 
         methods:{
             onCheck(){
-                this.$emit("input",!this.value);
+              this.$emit("input",!this.value);
             }
         }
     }
