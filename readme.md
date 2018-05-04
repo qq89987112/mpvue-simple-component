@@ -4,4 +4,4 @@
 
 # 有时候 slot 无效
 - 重新编译 npm run dev。
-- 带slot的抽成组件（用webstorm快速抽）
+- 带slot的抽成组件（用webstorm快速抽）,且只能放在同级目录下（就是webstorm自动生成的目录下）。
